@@ -6,16 +6,20 @@ import { fetchImages } from '../actions'
 
 
 class ImageCardList extends React.Component {
-  
-  componentDidMount(){
-    this.props.fetchImages(this.props.filter)
+
+  renderImage = (image) => {
+    return (
+      <div>
+        <ImageCard key={image.url} url={image.urls.regular} description={image.description} />
+      </div>
+    )
   }
 
   render(){
     return (
       <div>
         {
-          console.log(this.props.images)
+          this.props.images.map(image => this.renderImage(image))
         }
       </div>
     )
@@ -25,8 +29,7 @@ class ImageCardList extends React.Component {
 const mapStateToProps = (state) => {
   return {
     images: state.images,
-    likedImages: state.likedImages,
-    filter: state.filter
+    likedImages: state.likedImages
   }
 }
 

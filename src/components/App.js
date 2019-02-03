@@ -1,6 +1,5 @@
 import React from 'react'
 
-import actions from '../actions'
 import SearchBar from './SearchBar'
 import NavBar from './NavBar'
 import ImageCardList from './ImageCardList'
