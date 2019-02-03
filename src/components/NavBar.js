@@ -1,10 +1,12 @@
 import React from 'react'
 
+import './App.css'
+
 
 const NavBar = () => {
 
   return (
-    <div>
+    <div className="nav" >
       
     </div>
   )

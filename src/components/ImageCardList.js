@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import ImageCard from './ImageCard'
-import { fetchImages } from '../actions'
+import { fetchImages, likeImage, unlikeImage } from '../actions'
 import './App.css'
 
 
@@ -11,9 +11,25 @@ class ImageCardList extends React.Component {
   renderImage = (image) => {
     return (
       <div>
-        <ImageCard key={image.url} url={image.urls.regular} description={image.description} />
+        <ImageCard 
+          id={image.id} 
+          url={image.urls.regular} 
+          description={image.description} 
+          likeImage = {this.likeImage}
+          unlikeImage = {this.unlikeImage}
+        />
       </div>
     )
+  }
+
+  likeImage = (imageId) => {
+    const image = this.props.images.filter(image => image.id === imageId)
+    this.props.likeImage(image)
+  }
+
+  unlikeImage = (imageId) => {
+    const image = this.props.images.filter(image => image.id === imageId)
+    this.props.unlikeImage(image)
   }
 
   render(){
@@ -34,4 +50,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { fetchImages })(ImageCardList)
+export default connect(mapStateToProps, { fetchImages, likeImage, unlikeImage })(ImageCardList)

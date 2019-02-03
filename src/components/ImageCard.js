@@ -1,17 +1,39 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { likeImage, unlikeImage } from '../actions'
 import './App.css'
 
 
-const ImageCard = (props) => {
+class ImageCard extends React.Component {
 
-  return (
-    <div>
-      <img className="image" src={props.url} alt={props.description}></img>
-    </div>
-  )
+  state = {
+    liked: false
+  }
+
+  handleLikeClicked = () => {
+    this.state.liked ? this.props.unlikeImage(this.props.id) : this.props.likeImage(this.props.id)
+    this.setState({ liked: !this.state.liked })
+  }
+
+  render(){
+    return (
+      <div>
+        <img 
+          className="image" 
+          src={this.props.url} 
+          alt={this.props.description} 
+          onClick={() => this.handleLikeClicked()} 
+        />
+      </div>
+    )
+  }
 }
 
-export default connect(null, { likeImage, unlikeImage })(ImageCard)
+const mapStateToProps = (state) => {
+  return {
+    likedImages: state.likedImages,
+    image: state.images
+  }
+}
+
+export default connect(mapStateToProps)(ImageCard)
