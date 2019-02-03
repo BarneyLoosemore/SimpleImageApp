@@ -12,6 +12,7 @@ class ImageCardList extends React.Component {
     return (
       <div>
         <ImageCard 
+          key={image.id}
           id={image.id} 
           url={image.urls.regular} 
           description={image.description} 
@@ -24,10 +25,18 @@ class ImageCardList extends React.Component {
 
   likeImage = (imageId) => {
     const image = this.props.images.filter(image => image.id === imageId)
-    this.props.likeImage(image)
+
+    if (this.props.likedImages.find(i => i[0].id === imageId)){
+      console.log('unliked')
+      this.props.unlikeImage(image)
+    } else {
+      console.log('liked')
+      this.props.likeImage(image)
+    }
   }
 
   unlikeImage = (imageId) => {
+    console.log('unliked')
     const image = this.props.images.filter(image => image.id === imageId)
     this.props.unlikeImage(image)
   }
