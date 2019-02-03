@@ -1,0 +1,10 @@
+.image-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.image {
+  width: auto;
+  height: 200px;
+  padding: 5px
+}

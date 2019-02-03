@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import ImageCard from './ImageCard'
 import { fetchImages } from '../actions'
+import './App.css'
 
 
 class ImageCardList extends React.Component {
@@ -17,7 +18,7 @@ class ImageCardList extends React.Component {
 
   render(){
     return (
-      <div>
+      <div className="image-container">
         {
           this.props.images.map(image => this.renderImage(image))
         }
