@@ -1,12 +1,5 @@
 import unsplash from '../api/unsplash'
 
-// export const changeFilter = (filter) => {
-//   return {
-//     type: 'CHANGE_FILTER',
-//     payload: filter
-//   }
-// }
-
 export const fetchImages = (filter='') => async dispatch => {
   const response = await unsplash.get('/search/photos', {
     params: { query: filter.toLowerCase() }
