@@ -6,7 +6,7 @@ const likedImagesReducer = (state = [], action) => {
     case 'LIKE_IMAGE':
       return {...state, likedImages: [...state.likedImages, action.payload]}
     case 'UNLIKE_IMAGE':
-      return {...state, likedImages: state.likedImages.filter(image => image !== action.payload)}
+      return state.likedImages.filter(image => image !== action.payload)
     default:
       return state
   }

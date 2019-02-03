@@ -8,19 +8,21 @@ import { fetchImages } from '../actions'
 class ImageCardList extends React.Component {
   
   componentDidMount(){
-    this.props.fetchImages()
+    this.props.fetchImages(this.props.filter)
   }
 
   render(){
     return (
       <div>
-
+        {
+          console.log(this.props.images)
+        }
       </div>
     )
   }
 }
 
-function mapStateToProps(state){
+const mapStateToProps = (state) => {
   return {
     images: state.images,
     likedImages: state.likedImages,

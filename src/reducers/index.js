@@ -7,8 +7,9 @@ import filterReducer from './filterReducer'
 
 const rootReducer = combineReducers({
   images: imagesReducer,
-  likedImages: likedImagesReducer,
-  filter: filterReducer
+  likedImages: likedImagesReducer
+  // ,
+  // filter: filterReducer
 })
 
 export default rootReducer

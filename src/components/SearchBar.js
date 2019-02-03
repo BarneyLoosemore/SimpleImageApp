@@ -1,17 +1,34 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { changeFilter } from '../actions'
+import { fetchImages } from '../actions'
  
 
-const SearchBar = () => {
+class SearchBar extends React.Component {
 
-  return (
-    <div>
+  state = {
+    filter: ''
+  }
 
-    </div>
-  )
+  handleChange = (event) => {
+    this.setState({ filter: event.target.value })
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault()
+    this.props.fetchImages(this.state.filter)
+  }
+
+  render(){
+    return (
+      <div>
+        <form onSubmit={e => this.handleSubmit(e)} >
+          <input onChange={e => this.handleChange(e)} />
+        </form>
+      </div>
+    )
+  }
 }
 
 
-export default connect({ changeFilter })(SearchBar)
+export default connect(null, { fetchImages })(SearchBar)

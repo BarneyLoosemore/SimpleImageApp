@@ -4,7 +4,7 @@ import actions from '../actions'
 import SearchBar from './SearchBar'
 import NavBar from './NavBar'
 import ImageCardList from './ImageCardList'
-import LikedImageCardList from './LikedImageCardList'
+// import LikedImageCardList from './LikedImageCardList'
 
 
 class App extends React.Component {
@@ -12,7 +12,8 @@ class App extends React.Component {
   render(){
     return (
       <div>
-        
+        <SearchBar /> 
+        <ImageCardList />
       </div>
     )
   }
